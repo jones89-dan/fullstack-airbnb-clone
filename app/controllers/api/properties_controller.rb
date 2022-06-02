@@ -13,5 +13,9 @@ module Api
 
       render 'api/properties/show', status: :ok
     end
+
+    def create
+      @propert = Property.create({user_id: session.user.id, property_id: property.id, })
+    end
   end
 end
