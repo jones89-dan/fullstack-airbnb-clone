@@ -15,7 +15,18 @@ module Api
     end
 
     def create
-      @propert = Property.create({user_id: session.user.id, property_id: property.id, })
+      token = cookies.signed[:airbnb_session_token]
+      sessions = Session.find_by(token: token)
+
+      if session
+        user = session.user
+        @property = user.properties.new(property_params)
+
+        if @property.save
+          render 'api/properties/create'
+        end
+      end
     end
+    
   end
 end
