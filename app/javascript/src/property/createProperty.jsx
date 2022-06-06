@@ -1,22 +1,25 @@
 // createProperty.jsx
 import React from 'react';
+import ReactDOM from 'react-dom';
+// import $ from 'jquery';
 import Layout from '@src/layout';
 import BookingWidget from './bookingWidget';
 import { handleErrors } from '@utils/fetchHelper';
 
 import './property.scss';
 
-class CreateProperty extends React.Component {
+const CreateProperty = () => {
 
-  render () {
-
-    return (
-      <Layout>
+  return (
+    <Layout>
       <h1>Add a Property</h1>
-      </Layout>
-    )
-
-  }
+    </Layout>
+  )
 }
 
-export default CreateProperty
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+      <CreateProperty/>,
+      document.body.appendChild(document.createElement('div')),
+    )
+})

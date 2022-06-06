@@ -12,4 +12,8 @@ class StaticPagesController < ApplicationController
   def login
     render 'login'
   end
+
+  def createProperty
+    render 'createProperty'
+  end
 end
