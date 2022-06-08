@@ -9,12 +9,13 @@ $.ajaxSetup({
   }
 });
 
+// Create Property
 export var createProperty = function (title, description, city, country, property_type, price_per_night, max_guests, bedrooms, beds, baths, image, callback) {
-  var fromData = new FormData();
+  var formData = new FormData();
   if (image) {
     formData.append('property[image]', image);
   }
-  
+
   var request = {
     type: 'POST',
     url: 'api/properties',
@@ -29,7 +30,6 @@ export var createProperty = function (title, description, city, country, propert
       bedrooms: bedrooms,
       beds: beds,
       baths: baths,
-      formData,
     },
     success: function (response) {
       callback(response);

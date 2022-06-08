@@ -1,18 +1,43 @@
 // createProperty.jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import $ from 'jquery';
 import Layout from '@src/layout';
 import BookingWidget from './bookingWidget';
 import { handleErrors } from '@utils/fetchHelper';
-
+import { createProperty } from '@utils/requests';
+import $ from 'jquery';
 import './property.scss';
 
 const CreateProperty = () => {
 
+  const newProperty = (event) => {
+    event.preventDefault();
+    var title = $('.title').val();
+    var description = $('.description').val();
+    var city = $('.city').val();
+    var country = $('.country').val();
+    var propertyType = $('.property-type').val();
+    var pricePerNight = $('.price-per-night').val();
+    var maxGuests = $('.max-guests').val();
+    var bedrooms = $('.bedrooms').val();
+    var beds = $('.beds').val();
+    var baths = $('.baths').val();
+    var imageUpload = document.getElementById('imageUpload');
+    var img = imageUpload.files[0];
+
+    createProperty(title, description, city, country, propertyType, pricePerNight, maxGuests, bedrooms, beds, baths, img, function (response) {
+      if (response.success == false) {
+        console.log("Ooops, something went wrong");
+      }
+      else {
+        console.log("Property added successfully!");
+      }
+    });
+  }
+
   return (
     <Layout>
-      <form className="p-2 rounded">
+      <form className="p-2 rounded" onSubmit={newProperty}>
         <div className="new-to-t">
           <h1>Add a Property</h1>
         </div>
