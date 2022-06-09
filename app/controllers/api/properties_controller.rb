@@ -16,9 +16,9 @@ module Api
 
     def create
             token = cookies.signed[:airbnb_session_token]
-            sessions = Session.find_by(token: token)
+            session = Session.find_by(token: token)
             if session
-                @user = session.user
+                user = session.user
                 @property = user.properties.new(property_params)
                 if @property.save
                     render 'api/properties/create'
@@ -33,7 +33,7 @@ module Api
     private
 
        def property_params
-           params.require(:property).permit(:title, :description, :city, :country, :property_type, :price_per_night, :max_guests, :bedrooms, :beds, :baths, :image)
+           params.permit(:title, :description, :city, :country, :property_type, :price_per_night, :max_guests, :bedrooms, :beds, :baths, :image)
        end
 
   end
