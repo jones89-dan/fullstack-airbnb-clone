@@ -37,3 +37,15 @@ export var createProperty = function (title, description, city, country, propert
   };
   $.ajax(request);
 };
+
+// Sign out user
+export var logOut = function (callback) {
+	var request = {
+		type: 'DELETE',
+		url: 'api/sessions',
+		success: function (response) {
+			callback(response);
+		}
+	};
+	$.ajax(request);
+};
