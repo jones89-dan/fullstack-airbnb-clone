@@ -1,23 +1,11 @@
 // layout.js
 import $ from 'jquery';
 import React, { useEffect, useState } from 'react';
-import { logOut } from './utils/requests'
+import { logOut, authenticate } from './utils/requests'
 
 const Layout = (props) => {
 
   const [currentUser, setCurrentUser] = useState("");
-
-
-	const getCurrentUser = function (callback) {
-		authenticate(function (response){
-			if (response.authenticated == true) {
-				callback(response);
-			}
-			else if (response.authenticated ==  false) {
-				window.location.replace('/');
-			}
-		});
-	};
 
 	const handleLogout = function () {
 		getCurrentUser(function (response) {

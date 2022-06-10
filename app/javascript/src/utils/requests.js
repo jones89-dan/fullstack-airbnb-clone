@@ -50,8 +50,8 @@ export var logOut = function (callback) {
 	$.ajax(request);
 };
 
-// authenticate user
-const authenticate = function (callback) {
+// Authenticate user
+export var authenticate = function (callback) {
   var request = {
     type: 'GET',
     url: 'api/authenticated',
@@ -60,4 +60,16 @@ const authenticate = function (callback) {
     }
   };
   $.ajax(request);
+};
+
+// Get current username
+export var  getCurrentUser = function (callback) {
+  authenticate(function (response){
+    if (response.authenticated == true) {
+      callback(response);
+    }
+    else if (response.authenticated ==  false) {
+      window.location.replace('/');
+    }
+  });
 };
