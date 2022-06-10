@@ -57,6 +57,7 @@ export var authenticate = function (callback) {
     url: 'api/authenticated',
     success: function (response) {
       callback(response);
+      console.log("logged out")
     }
   };
   $.ajax(request);

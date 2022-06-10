@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
 
-  get '/property/:id' => 'static_pages#property'
-  get '/login' => 'static_pages#login'
+  get '/property/:id'   => 'static_pages#property'
+  get '/login'          => 'static_pages#login'
   get '/createProperty' => 'static_pages#createProperty'
 
   namespace :api do
@@ -13,10 +13,13 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
     resources :charges, only: [:create]
 
+    # properties
     get '/properties/:id/bookings' => 'bookings#get_property_bookings'
-    get '/authenticated' => 'sessions#authenticated'
+    post '/createProperty'         => 'properties#create'
 
-    post '/createProperty' => 'properties#create'
+    # sessions
+    get '/authenticated' => 'sessions#authenticated'
+    delete '/sessions'   => 'sessions#destroy'
 
     # stripe webhook
     post '/charges/mark_complete' => 'charges#mark_complete'

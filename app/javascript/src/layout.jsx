@@ -1,7 +1,7 @@
 // layout.js
 import $ from 'jquery';
 import React, { useEffect, useState } from 'react';
-import { logOut, authenticate } from './utils/requests'
+import { logOut, authenticate, getCurrentUser } from './utils/requests'
 
 const Layout = (props) => {
 
@@ -32,6 +32,9 @@ const Layout = (props) => {
               <li className="nav-item">
                 <a className="nav-link" href="/createProperty">Add Property</a>
               </li>
+              <li className="nav-item">
+		            <a className="nav-link" onClick={handleLogout}>Logout</a>
+	            </li>
             </ul>
           </div>
         </div>
