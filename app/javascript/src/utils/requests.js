@@ -49,3 +49,15 @@ export var logOut = function (callback) {
 	};
 	$.ajax(request);
 };
+
+// authenticate user
+const authenticate = function (callback) {
+  var request = {
+    type: 'GET',
+    url: 'api/authenticated',
+    success: function (response) {
+      callback(response);
+    }
+  };
+  $.ajax(request);
+};
