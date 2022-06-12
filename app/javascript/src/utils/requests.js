@@ -31,6 +31,7 @@ export var createProperty = function (title, description, city, country, propert
       beds: beds,
       baths: baths,
     },
+    formData,
     success: function (response) {
       callback(response);
     }

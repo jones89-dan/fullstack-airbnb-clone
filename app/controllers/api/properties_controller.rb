@@ -1,5 +1,6 @@
 module Api
   class PropertiesController < ApplicationController
+
     def index
       @properties = Property.order(created_at: :desc).page(params[:page]).per(6)
       return render json: { error: 'not_found' }, status: :not_found if !@properties
