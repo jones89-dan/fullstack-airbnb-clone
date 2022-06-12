@@ -1,14 +1,16 @@
 // createProperty.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
 import BookingWidget from './bookingWidget';
-import { handleErrors } from '@utils/fetchHelper';
 import { createProperty } from '@utils/requests';
+import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import $ from 'jquery';
 import './property.scss';
 
 const CreateProperty = () => {
+
+  const [img, setImage] = useState([]);
 
   const newProperty = (event) => {
     event.preventDefault();
