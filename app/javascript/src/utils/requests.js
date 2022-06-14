@@ -29,11 +29,12 @@ export var createProperty = function (title, description, city, country, propert
       max_guests: max_guests,
       bedrooms: bedrooms,
       beds: beds,
-      baths: baths,
+      image_url: formData,
     },
-    formData,
+  
     success: function (response) {
       callback(response);
+      console.log(image);
     }
   };
   $.ajax(request);
