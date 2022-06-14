@@ -22,7 +22,8 @@ export var createProperty = function (title, description, city, country, propert
   formData.set('property[bedrooms]', bedrooms);
   formData.set('property[beds]', beds);
   formData.set('property[baths]', baths);
-
+  formData.append('property[image_url]', image_url);
+  
   var request = {
     type: 'POST',
     url: 'api/properties',
