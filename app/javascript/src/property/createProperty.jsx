@@ -8,20 +8,11 @@ import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import $ from 'jquery';
 import './property.scss';
 
-class CreateProperty extends React.Component {
+const CreateProperty = () => {
 
-state = {
-  property: {}
-}
 
-handleChange = (error) => {
-        this.setState({
-            [error.target.name]: error.target.value,
-        })
-    }
 
-/*
-  newProperty = (event) => {
+   const newProperty = (event) => {
     event.preventDefault();
     var title = $('.title').val();
     var description = $('.description').val();
@@ -39,27 +30,29 @@ handleChange = (error) => {
     createProperty(title, description, city, country, propertyType, pricePerNight, maxGuests, bedrooms, beds, baths, img, function (response) {
       if (response.success == false) {
         console.log("Ooops, something went wrong");
+        console.log(response.error);
       }
       else {
         console.log("Property added successfully!");
       }
     });
   }
-*/
 
-  createBooking = (event) => {
+
+  const createBooking = (event) => {
       event.preventDefualt();
       let formData = new FormData();
-      formData.set('property[images]', this.state.image_url);
-      formData.set('property[title]', this.state.title);
-      formData.set('property[city]', this.state.description);
-      formData.set('property[title]', this.state.country);
-      formData.set('property[city]', this.state.property_type);
-      formData.set('property[title]', this.state.price_per_night);
-      formData.set('property[city]', this.state.max_guests);
-      formData.set('property[city]', this.state.bedrooms);
-      formData.set('property[city]', this.state.beds);
-      formData.set('property[city]', this.state.baths);
+      formData.append('property[image_url]', this.state.image_url);
+      formData.append('property[title]', this.state.title);
+      formData.append('property[description]', this.state.description);
+      formData.append('property[city]', this.state.city);
+      formData.append('property[country]', this.state.country);
+      formData.append('property[property_type]', this.state.property_type);
+      formData.append('property[price_per_night]', this.state.price_per_night);
+      formData.append('property[max_guests]', this.state.max_guests);
+      formData.append('property[bedrooms]', this.state.bedrooms);
+      formData.append('property[beds]', this.state.beds);
+      formData.append('property[baths]', this.state.baths);
 
         fetch('/api/properties', safeCredentials({
             method: 'POST',
@@ -68,57 +61,54 @@ handleChange = (error) => {
 
     }
 
-  render () {
 
-    const { property } = this.state;
-    const { id, title, description, city, country, property_type, price_per_night, max_guests, bedrooms, beds, baths, image_url, user} = property;
 
-    return (
-      <Layout>
-        <form className="p-2 rounded" onSubmit={this.createBooking}>
-          <div className="new-to-t">
-            <h1>Add a Property</h1>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control title" placeholder="Title" value={title} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control description" placeholder="Description" value={description} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control city" placeholder="City" value={city} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control country" placeholder="Country" value={country} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text"className="form-control property-type" placeholder="Property Type" value={property_type} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control price-per-night" placeholder="Price Per Night" value={price_per_night} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control max-guests" placeholder="Max Guests" value={max_guests} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control bedrooms" placeholder="Bedrooms" value={bedrooms} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control beds" placeholder="Beds" value={beds} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control baths" placeholder="Baths" value={baths} onChange={this.handleChange}/>
-          </div>
+  return (
+    <Layout>
+      <form className="p-2 rounded" onSubmit={newProperty}>
+        <div className="new-to-t">
+          <h1>Add a Property</h1>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control title" placeholder="Title"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control description" placeholder="Description"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control city" placeholder="City"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control country" placeholder="Country"/>
+        </div>
+        <div className="form-group">
+          <input type="text"className="form-control property-type" placeholder="Property Type"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control price-per-night" placeholder="Price Per Night"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control max-guests" placeholder="Max Guests"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control bedrooms" placeholder="Bedrooms"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control beds" placeholder="Beds"/>
+        </div>
+        <div className="form-group">
+          <input type="text" className="form-control baths" placeholder="Baths"/>
+        </div>
 
-          <label id="upload-image-btn" htmlFor="imageUpload">Upload image</label>
-          <img id="image-preview" src="" style={{display: 'none'}} alt="image preview" />
-          <input type="file" id="imageUpload" name="image" accept="image/*" value={image_url} onChange={this.handleChange}/>
+        <label id="upload-image-btn" htmlFor="imageUpload">Upload image</label>
+        <img id="image-preview" src="" style={{display: 'none'}} alt="image preview"/>
+        <input type="file" id="imageUpload" name="image" accept="image/*"></input>
 
-          <button type="submit" id="sign-up-btn" className="btn btn-default btn-warning pull-right">Add Property</button>
-        </form>
-      </Layout>
-    )
-  }
+        <button type="submit" id="sign-up-btn" className="btn btn-default btn-warning pull-right">Add Property</button>
+      </form>
+    </Layout>
+
+  )
 }
 
 document.addEventListener('DOMContentLoaded', () => {

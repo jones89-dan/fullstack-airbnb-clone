@@ -10,33 +10,35 @@ $.ajaxSetup({
 });
 
 // Create Property
-export var createProperty = function (title, description, city, country, property_type, price_per_night, max_guests, bedrooms, beds, baths, image, callback) {
+export var createProperty = function (title, description, city, country, property_type, price_per_night, max_guests, bedrooms, beds, baths, image_url, callback) {
   var formData = new FormData();
-  if (image) {
-    formData.append('property[image]', image);
-  }
+  formData.set('property[title]', title);
+  formData.set('property[description]', description);
+  formData.set('property[city]', city);
+  formData.set('property[title]', country);
+  formData.set('property[property_type]', property_type);
+  formData.set('property[price_per_night]', price_per_night);
+  formData.set('property[max_guests]', max_guests);
+  formData.set('property[bedrooms]', bedrooms);
+  formData.set('property[beds]', beds);
+  formData.set('property[baths]', baths);
 
   var request = {
     type: 'POST',
     url: 'api/properties',
-    data: {
-      title: title,
-      description: description,
-      city: city,
-      country: country,
-      property_type: property_type,
-      price_per_night: price_per_night,
-      max_guests: max_guests,
-      bedrooms: bedrooms,
-      beds: beds,
-      image_url: formData,
-    },
-  
+    cache: false,
+    contentType: false,
+    processData: false,
+    xhrFields: { 'withCredentials': true },
+    data:  formData,
     success: function (response) {
       callback(response);
-      console.log(image);
+    },
+    error: function (request, errorMessage) {
+      console.log(request, errorMessage);
     }
   };
+
   $.ajax(request);
 };
 
