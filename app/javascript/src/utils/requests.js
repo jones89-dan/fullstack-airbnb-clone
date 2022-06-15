@@ -10,7 +10,7 @@ $.ajaxSetup({
 });
 
 // Create Property
-export var createProperty = function (title, description, city, country, property_type, price_per_night, max_guests, bedrooms, beds, baths, image_url, callback) {
+export var createProperty = function (title, description, city, country, property_type, price_per_night, max_guests, bedrooms, beds, baths, image, callback) {
   var formData = new FormData();
   formData.set('property[title]', title);
   formData.set('property[description]', description);
@@ -22,7 +22,7 @@ export var createProperty = function (title, description, city, country, propert
   formData.set('property[bedrooms]', bedrooms);
   formData.set('property[beds]', beds);
   formData.set('property[baths]', baths);
-  formData.append('property[image]', image_url);
+  formData.set('property[image]', image);
 
   var request = {
     type: 'POST',

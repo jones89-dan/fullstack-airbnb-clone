@@ -10,7 +10,12 @@ import './property.scss';
 
 const CreateProperty = () => {
 
+  const [imagePreview, setImagePreview] = useState("");
 
+  const handleImage = function (event) {
+    var source = URL.createObjectURL(event.target.files[0]);
+    setImagePreview(source);
+  };
 
    const newProperty = (event) => {
     event.preventDefault();
@@ -102,7 +107,7 @@ const CreateProperty = () => {
 
         <label id="upload-image-btn" htmlFor="imageUpload">Upload image</label>
         <img id="image-preview" src="" style={{display: 'none'}} alt="image preview"/>
-        <input type="file" id="imageUpload" name="image" accept="image/*"></input>
+        <input type="file" id="imageUpload" name="image" accept="image/*" onChange={handleImage}></input>
 
         <button type="submit" id="sign-up-btn" className="btn btn-default btn-warning pull-right">Add Property</button>
       </form>
