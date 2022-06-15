@@ -15,15 +15,15 @@ export var createProperty = function (title, description, city, country, propert
   formData.set('property[title]', title);
   formData.set('property[description]', description);
   formData.set('property[city]', city);
-  formData.set('property[title]', country);
+  formData.set('property[country]', country);
   formData.set('property[property_type]', property_type);
   formData.set('property[price_per_night]', price_per_night);
   formData.set('property[max_guests]', max_guests);
   formData.set('property[bedrooms]', bedrooms);
   formData.set('property[beds]', beds);
   formData.set('property[baths]', baths);
-  formData.append('property[image_url]', image_url);
-  
+  formData.append('property[image]', image_url);
+
   var request = {
     type: 'POST',
     url: 'api/properties',
