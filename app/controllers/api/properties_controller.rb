@@ -31,10 +31,15 @@ module Api
             end
         end
 
+        def edit
+            @property = Property.find_by(id: params[:id])
+            render 'api/properties/show', status: :ok
+        end
+
     private
 
        def property_params
-           params.require(:property).permit(:title, :description, :city, :country, :property_type, :price_per_night, :max_guests, :bedrooms, :beds, :baths, :image)
+           params.require(:property).permit(:title, :description, :city, :country, :property_type, :price_per_night, :max_guests, :bedrooms, :beds, :baths, :image_url)
        end
 
   end
