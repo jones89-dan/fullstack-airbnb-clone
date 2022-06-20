@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_12_171437) do
+ActiveRecord::Schema.define(version: 2022_06_20_051027) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,23 +62,8 @@ ActiveRecord::Schema.define(version: 2022_06_12_171437) do
     t.index ["booking_id"], name: "index_charges_on_booking_id"
   end
 
-  create_table "properties", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.string "city"
-    t.string "country"
-    t.string "property_type"
-    t.integer "price_per_night"
-    t.integer "max_guests"
-    t.integer "bedrooms"
-    t.integer "beds"
-    t.integer "baths"
-    t.string "image_url"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_properties_on_user_id"
-  end
+# Could not dump table "properties" because of following StandardError
+#   Unknown type 'image' for column 'image_url'
 
   create_table "sessions", force: :cascade do |t|
     t.string "token"

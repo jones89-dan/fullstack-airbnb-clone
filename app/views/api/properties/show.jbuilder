@@ -10,7 +10,7 @@ json.property do
   json.bedrooms @property.bedrooms
   json.beds @property.beds
   json.baths @property.baths
-  json.image_url @property.image_url
+  json.image @property.image
 
   json.user do
     json.id @property.user.id
