@@ -79,3 +79,16 @@ export var  getCurrentUser = function (callback) {
     }
   });
 };
+
+export var editProperties = function (property_id, callback) {
+  var request = {
+    type: "PUT",
+    url: "/api/properties/" + id,
+    success: function (response) {
+      if (response.success == true) {
+      callback();
+      }
+    }
+  };
+  $.ajax(request);
+}
