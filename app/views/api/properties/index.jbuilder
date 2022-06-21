@@ -9,6 +9,6 @@ json.properties do
     json.country property.country
     json.property_type property.property_type
     json.price_per_night property.price_per_night
-    json.image_url property.image_url
+    json.image property.image
   end
 end
