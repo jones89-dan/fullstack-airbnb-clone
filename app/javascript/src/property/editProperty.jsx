@@ -14,7 +14,7 @@ class EditProperty extends React.Component {
         })
     }
 
-    editBooking = (e) => {
+    editExistingProperty = (e) => {
         if (e) { e.preventDefault(); }
         fetch(`/api/properties/${this.props.property_id}`, safeCredentials({
             method: 'PUT',
