@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
-import BookingWidget from './bookingWidget';
 import { createProperty } from '@utils/requests';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import $ from 'jquery';
