@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/property/:id'   => 'static_pages#property'
   get '/login'          => 'static_pages#login'
   get '/createProperty' => 'static_pages#createProperty'
+  get '/editProperty'   => 'static_pages#editProperty'
 
   namespace :api do
     # Add routes below this line
@@ -15,18 +16,15 @@ Rails.application.routes.draw do
 
     # properties
     get '/properties/:id/bookings' => 'bookings#get_property_bookings'
-
     post '/createProperty'         => 'properties#create'
-    put '/properties'              => 'properties#edit'
+    put '/editProperty'            => 'properties#edit'
 
     # sessions
-    get '/authenticated' => 'sessions#authenticated'
-    delete '/sessions'   => 'sessions#destroy'
+    get '/authenticated'           => 'sessions#authenticated'
+    delete '/sessions'             => 'sessions#destroy'
 
     # stripe webhook
-    post '/charges/mark_complete' => 'charges#mark_complete'
-
+    post '/charges/mark_complete'  => 'charges#mark_complete'
 
   end
-
 end

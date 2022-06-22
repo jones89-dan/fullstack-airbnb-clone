@@ -42,7 +42,6 @@ const CreateProperty = () => {
     });
   }
 
-
   const createBooking = (event) => {
       event.preventDefualt();
       let formData = new FormData();
@@ -64,8 +63,6 @@ const CreateProperty = () => {
         }))
 
     }
-
-
 
   return (
     <Layout>
