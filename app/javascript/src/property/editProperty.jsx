@@ -6,20 +6,32 @@ import { editProperties } from '@utils/requests';
 import $ from 'jquery';
 import './property.scss';
 
-const EditProperty = () => {
-  const state = {
+class EditProperty extends React.Component {
+   state = {
         property: {},
     }
 
-  const propertyID = window.location.pathname.replace('/', '');
+   propertyID = window.location.pathname.replace('/', '');
 
-  const handleChange = (event) => {
+   handleChange = (event) => {
           this.setState({
             [e.target.name]: e.target.value,
           })
         }
 
-  const  editExistingProperty = (e) => {
+
+        componentDidMount() {
+          fetch(`/api/properties/${this.props.property_id}`)
+            .then(handleErrors)
+            .then(data => {
+              this.setState({
+                property: data.property,
+                loading: false,
+              })
+            })
+        }
+
+  editExistingProperty = (e) => {
         if (e) { e.preventDefault(); }
         fetch(`/api/properties/${propertyID}`, safeCredentials({
             method: 'PUT',
@@ -48,10 +60,30 @@ const EditProperty = () => {
             })
     }
 
+    render () {
+
+      const { property } = this.state;
+
+      const {
+        id,
+        title,
+        description,
+        city,
+        country,
+        property_type,
+        price_per_night,
+        max_guests,
+        bedrooms,
+        beds,
+        baths,
+        image,
+        user,
+      } = property
+
       return (
         <Layout>
-          <h3>Hello <br />Some changes to the property? Share them below!</h3>
-            <form onSubmit={editExistingProperty}>
+          <h3>Make changes to your property</h3>
+            <form onSubmit={this.editExistingProperty}>
               <input name='title' className="form-control form-control-lg mb-3" type='text' placeholder={title} value={title} onChange={this.handleChange} required />
               <input name='description' className="form-control form-control-lg mb-3" type='text' placeholder={description} value={description} onChange={this.handleChange} required />
               <input name='city' className="form-control form-control-lg mb-3" type='text' placeholder={city} value={city} onChange={this.handleChange} required />
@@ -67,6 +99,7 @@ const EditProperty = () => {
             </form>
           </Layout>
       )
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
