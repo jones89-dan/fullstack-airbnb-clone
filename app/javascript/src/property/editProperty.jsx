@@ -19,7 +19,6 @@ class EditProperty extends React.Component {
           })
         }
 
-
         componentDidMount() {
           fetch(`/api/properties/${this.props.property_id}`)
             .then(handleErrors)
@@ -95,7 +94,7 @@ class EditProperty extends React.Component {
               <input name='beds' className="form-control form-control-lg mb-3" type='number' placeholder={beds} value={beds} onChange={this.handleChange} required />
               <input name='baths' className="form-control form-control-lg mb-3" type='number' placeholder={baths} value={baths} onChange={this.handleChange} required />
               <input name='image_url' className="form-control form-control-lg mb-3" type='text' placeholder={image} value={image} onChange={this.handleChange} required />
-              <button type="submit" className="btn btn-danger btn-block btn-lg">Share your spot!</button>
+              <button type="submit" className="btn btn-danger btn-block btn-lg">Update!</button>
             </form>
           </Layout>
       )
