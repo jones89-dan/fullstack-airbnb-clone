@@ -1,6 +1,6 @@
 // property.jsx
 import React from 'react';
-import { Link, Router } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Layout from '@src/layout';
 import BookingWidget from './bookingWidget';
 import { handleErrors } from '@utils/fetchHelper';
@@ -48,6 +48,8 @@ class Property extends React.Component {
       user,
     } = property
 
+    const editPropPath = "./editProperty";
+
     return (
       <Layout>
         <div className="property-image mb-3" style={{ backgroundImage: `asset-url(${image})` }} />
@@ -74,7 +76,7 @@ class Property extends React.Component {
             <div className="col-12 col-lg-5">
               <BookingWidget property_id={id} price_per_night={price_per_night} />
               <Router>
-                <Link to="/editProperty" params={{property_id: id}}>Edit</Link>
+                <Link to={"/editProperty"}>Edit</Link>
               </Router>
             </div>
           </div>
