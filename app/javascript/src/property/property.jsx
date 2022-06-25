@@ -76,7 +76,7 @@ class Property extends React.Component {
             <div className="col-12 col-lg-5">
               <BookingWidget property_id={id} price_per_night={price_per_night} />
               <Router>
-                <Link to={"/editProperty"}>Edit</Link>
+                <Link to="/editProperty" onClick={()=>history.push("/editProperty")}>Edit</Link>
               </Router>
             </div>
           </div>
