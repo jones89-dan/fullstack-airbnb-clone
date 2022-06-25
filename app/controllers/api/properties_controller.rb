@@ -36,6 +36,11 @@ module Api
             render 'api/properties/show', status: :ok
         end
 
+        def get_property
+          property = Property.find_by(id: params[:id])
+          return render json: { error: 'cannot find property' }, status: :not_found if !property
+        end
+
     private
 
        def property_params

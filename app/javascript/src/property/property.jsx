@@ -32,6 +32,8 @@ class Property extends React.Component {
       return <p>loading...</p>;
     };
 
+    const propId = this.props.property_id;
+
     const {
       id,
       title,
@@ -47,8 +49,6 @@ class Property extends React.Component {
       image,
       user,
     } = property
-
-    const editPropPath = "./editProperty";
 
     return (
       <Layout>
@@ -76,7 +76,7 @@ class Property extends React.Component {
             <div className="col-12 col-lg-5">
               <BookingWidget property_id={id} price_per_night={price_per_night} />
               <Router>
-                <Link to="/editProperty" onClick={()=>history.push("/editProperty")}>Edit</Link>
+                <Link to={"/editProperty/" + propId} onClick={()=>history.push("/editProperty/" + id)} params={{ property_id: id }}>Edit</Link>
               </Router>
             </div>
           </div>

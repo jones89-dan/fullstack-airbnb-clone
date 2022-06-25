@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from '@src/layout';
-import ReactDOM from 'react-dom';
+import ReactDOM, { useParams } from 'react-dom';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import { editProperties } from '@utils/requests';
 import $ from 'jquery';
@@ -11,7 +11,7 @@ class EditProperty extends React.Component {
         property: {},
     }
 
-   propertyID = window.location.pathname.replace('/', '');
+  propertyID = window.location.pathname.replace('/editProperty', '');
 
    handleChange = (event) => {
           this.setState({
@@ -20,7 +20,7 @@ class EditProperty extends React.Component {
         }
 
         componentDidMount() {
-          fetch(`/api/properties/${this.props.property_id}`)
+          fetch(`/api/properties/${this.propertyID}`)
             .then(handleErrors)
             .then(data => {
               this.setState({
@@ -30,9 +30,11 @@ class EditProperty extends React.Component {
             })
         }
 
+
+
   editExistingProperty = (e) => {
         if (e) { e.preventDefault(); }
-        fetch(`/api/properties/${propertyID}`, safeCredentials({
+        fetch(`/api/editProperty/${propertyID}`, safeCredentials({
             method: 'PUT',
             body: JSON.stringify({
                 property: {
@@ -62,6 +64,7 @@ class EditProperty extends React.Component {
     render () {
 
       const { property } = this.state;
+      const { property_id } = this.props;
 
       const {
         id,
