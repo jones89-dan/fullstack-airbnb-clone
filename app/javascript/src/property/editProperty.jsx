@@ -11,7 +11,7 @@ class EditProperty extends React.Component {
         property: {},
     }
 
-  propertyID = window.location.pathname.replace('/editProperty', '');
+   propertyID = window.location.pathname.replace('/editProperty', '');
 
    handleChange = (event) => {
           this.setState({
@@ -29,8 +29,6 @@ class EditProperty extends React.Component {
               })
             })
         }
-
-
 
   editExistingProperty = (e) => {
         if (e) { e.preventDefault(); }
@@ -64,7 +62,6 @@ class EditProperty extends React.Component {
     render () {
 
       const { property } = this.state;
-      const { property_id } = this.props;
 
       const {
         id,
