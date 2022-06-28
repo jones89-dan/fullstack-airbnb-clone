@@ -81,9 +81,16 @@ class EditProperty extends React.Component {
         formData.append('property[image_url]', this.state.image_url);
 
           fetch(`/api/editProperty/${propertyID}`, safeCredentials({
-              method: 'PUT',
+              method: 'PATCH',
               body: formData,
           }))
+          .then(handleErrors)
+          .then(response => {
+              console.log(response);
+          })
+          .catch(error => {
+              console.log(error);
+          })
       }
 
     render () {
