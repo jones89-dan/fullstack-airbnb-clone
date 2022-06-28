@@ -61,7 +61,6 @@ const CreateProperty = () => {
             method: 'POST',
             body: formData,
         }))
-
     }
 
   return (

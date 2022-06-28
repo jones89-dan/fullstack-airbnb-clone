@@ -19,16 +19,22 @@ class EditProperty extends React.Component {
           })
         }
 
-        componentDidMount() {
-          fetch(`/api/properties/${this.propertyID}`)
-            .then(handleErrors)
-            .then(data => {
-              this.setState({
-                property: data.property,
-                loading: false,
-              })
-            })
-        }
+  componentDidMount() {
+    fetch(`/api/properties/${this.propertyID}`)
+      .then(handleErrors)
+      .then(data => {
+        this.setState({
+          property: data.property,
+          loading: false,
+        })
+      })
+    }
+
+    setAttributes = (property) => {
+    for (let attribute in property) {
+      this.setState({ [attribute]: property[attribute] })
+    }
+  }
 
   editExistingProperty = (e) => {
         if (e) { e.preventDefault(); }
@@ -59,6 +65,27 @@ class EditProperty extends React.Component {
             })
     }
 
+    updateProperty = (event) => {
+        event.preventDefualt();
+        let formData = new FormData();
+        formData.append('property[title]', this.state.title);
+        formData.append('property[description]', this.state.description);
+        formData.append('property[city]', this.state.city);
+        formData.append('property[country]', this.state.country);
+        formData.append('property[property_type]', this.state.property_type);
+        formData.append('property[price_per_night]', this.state.price_per_night);
+        formData.append('property[max_guests]', this.state.max_guests);
+        formData.append('property[bedrooms]', this.state.bedrooms);
+        formData.append('property[beds]', this.state.beds);
+        formData.append('property[baths]', this.state.baths);
+        formData.append('property[image_url]', this.state.image_url);
+
+          fetch(`/api/editProperty/${propertyID}`, safeCredentials({
+              method: 'PUT',
+              body: formData,
+          }))
+      }
+
     render () {
 
 
@@ -83,7 +110,7 @@ class EditProperty extends React.Component {
       return (
         <Layout>
           <h3>Make changes to your property</h3>
-            <form onSubmit={this.editExistingProperty}>
+            <form onSubmit={this.updateProperty}>
               <input name='title' className="form-control form-control-lg mb-3" type='text' placeholder={title} value={this.state.title || ""} onChange={this.handleChange} required />
               <input name='description' className="form-control form-control-lg mb-3" type='text' placeholder={description} value={this.state.description || ""} onChange={this.handleChange} required />
               <input name='city' className="form-control form-control-lg mb-3" type='text' placeholder={city} value={this.state.city || ""} onChange={this.handleChange} required />
