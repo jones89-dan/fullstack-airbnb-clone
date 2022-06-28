@@ -47,9 +47,10 @@ export var createProperty = function (title, description, city, country, propert
 export var logOut = function (callback) {
 	var request = {
 		type: 'DELETE',
-		url: 'api/sessions',
+		url: '../api/sessions',
 		success: function (response) {
 			callback(response);
+      console.log("logged out")
 		}
 	};
 	$.ajax(request);
@@ -59,10 +60,9 @@ export var logOut = function (callback) {
 export var authenticate = function (callback) {
   var request = {
     type: 'GET',
-    url: 'api/authenticated',
+    url: '../api/authenticated',
     success: function (response) {
       callback(response);
-      console.log("logged out")
     }
   };
   $.ajax(request);

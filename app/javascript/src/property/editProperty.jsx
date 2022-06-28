@@ -111,17 +111,17 @@ class EditProperty extends React.Component {
         <Layout>
           <h3>Make changes to your property</h3>
             <form onSubmit={this.updateProperty}>
-              <input name='title' className="form-control form-control-lg mb-3" type='text' placeholder={title} value={this.state.title || ""} onChange={this.handleChange} required />
-              <input name='description' className="form-control form-control-lg mb-3" type='text' placeholder={description} value={this.state.description || ""} onChange={this.handleChange} required />
-              <input name='city' className="form-control form-control-lg mb-3" type='text' placeholder={city} value={this.state.city || ""} onChange={this.handleChange} required />
-              <input name='country' className="form-control form-control-lg mb-3" type='text' placeholder={country} value={this.state.country || ""} onChange={this.handleChange} required />
-              <input name='property_type' className="form-control form-control-lg mb-3" type='text' placeholder={property_type} value={this.state.property_type || ""} onChange={this.handleChange} required />
-              <input name='price_per_night' className="form-control form-control-lg mb-3" type='number' placeholder={price_per_night} value={this.state.price_per_night || ""} onChange={this.handleChange} required />
-              <input name='max_guests' className="form-control form-control-lg mb-3" type='number' placeholder={max_guests} value={this.state.max_guests || ""} onChange={this.handleChange} required />
-              <input name='bedrooms' className="form-control form-control-lg mb-3" type='number' placeholder={bedrooms} value={this.state.bedrooms || ""} onChange={this.handleChange} required />
-              <input name='beds' className="form-control form-control-lg mb-3" type='number' placeholder={beds} value={this.state.beds || ""} onChange={this.handleChange} required />
-              <input name='baths' className="form-control form-control-lg mb-3" type='number' placeholder={baths} value={this.state.baths || ""} onChange={this.handleChange} required />
-              <input name='image_url' className="form-control form-control-lg mb-3" type='text' placeholder={image} value={this.state.image || ""} onChange={this.handleChange} required />
+              <input name='title' className="form-control form-control-lg mb-3" type='text' placeholder={title} value={this.state.title || ""} onChange={this.handleChange}  />
+              <input name='description' className="form-control form-control-lg mb-3" type='text' placeholder={description} value={this.state.description || ""} onChange={this.handleChange}  />
+              <input name='city' className="form-control form-control-lg mb-3" type='text' placeholder={city} value={this.state.city || ""} onChange={this.handleChange}  />
+              <input name='country' className="form-control form-control-lg mb-3" type='text' placeholder={country} value={this.state.country || ""} onChange={this.handleChange}  />
+              <input name='property_type' className="form-control form-control-lg mb-3" type='text' placeholder={property_type} value={this.state.property_type || ""} onChange={this.handleChange}  />
+              <input name='price_per_night' className="form-control form-control-lg mb-3" type='number' placeholder={price_per_night} value={this.state.price_per_night || ""} onChange={this.handleChange}  />
+              <input name='max_guests' className="form-control form-control-lg mb-3" type='number' placeholder={max_guests} value={this.state.max_guests || ""} onChange={this.handleChange}  />
+              <input name='bedrooms' className="form-control form-control-lg mb-3" type='number' placeholder={bedrooms} value={this.state.bedrooms || ""} onChange={this.handleChange}  />
+              <input name='beds' className="form-control form-control-lg mb-3" type='number' placeholder={beds} value={this.state.beds || ""} onChange={this.handleChange}  />
+              <input name='baths' className="form-control form-control-lg mb-3" type='number' placeholder={baths} value={this.state.baths || ""} onChange={this.handleChange}  />
+
               <button type="submit" className="btn btn-danger btn-block btn-lg">Update!</button>
             </form>
           </Layout>

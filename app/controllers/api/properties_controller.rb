@@ -32,8 +32,12 @@ module Api
         end
 
         def edit
-            @property = Property.find_by(id: params[:id])
-            render 'api/properties/show', status: :ok
+          token = cookies.signed[:airbnb_session_token]
+          session = Session.find_by(token: token)
+          user = session.user
+
+          @property = Property.find_by(id: params[:id])
+          render 'api/properties/show', status: :ok
         end
 
         def get_property

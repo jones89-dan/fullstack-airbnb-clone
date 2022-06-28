@@ -14,7 +14,7 @@ const Layout = (props) => {
 
 		logOut(function (response) {
 			if (response.success == true) {
-				window.location.replace('/');
+				window.location.replace('/login');
 			};
 		});
 	};
@@ -34,6 +34,9 @@ const Layout = (props) => {
               </li>
               <li className="nav-item">
 		            <a className="nav-link" onClick={handleLogout}>Logout</a>
+	            </li>
+              <li className="nav-item">
+		            <a className="nav-link" href="/login">Login</a>
 	            </li>
             </ul>
           </div>
