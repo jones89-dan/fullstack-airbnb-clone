@@ -17,8 +17,6 @@ class EditProperty extends React.Component {
           this.setState({
             [event.target.name]: event.target.value,
           })
-          console.log(event.target.name);
-          console.log(event.target.value);
         }
 
   componentDidMount() {
@@ -31,7 +29,6 @@ class EditProperty extends React.Component {
         })
       })
     }
-
 
   editExistingProperty = (e) => {
         if (e) { e.preventDefault(); }
@@ -62,39 +59,8 @@ class EditProperty extends React.Component {
             })
     }
 
-    updateProperty = (event) => {
-        event.preventDefualt();
-        let formData = new FormData();
-        formData.append('property[title]', this.state.title);
-        formData.append('property[description]', this.state.description);
-        formData.append('property[city]', this.state.city);
-        formData.append('property[country]', this.state.country);
-        formData.append('property[property_type]', this.state.property_type);
-        formData.append('property[price_per_night]', this.state.price_per_night);
-        formData.append('property[max_guests]', this.state.max_guests);
-        formData.append('property[bedrooms]', this.state.bedrooms);
-        formData.append('property[beds]', this.state.beds);
-        formData.append('property[baths]', this.state.baths);
-        formData.append('property[image_url]', this.state.image_url);
-
-          fetch(`/api/editProperty/${propertyID}`, safeCredentials({
-              method: 'PUT',
-              data: formData,
-          }))
-          .then(handleErrors)
-          .then(response => {
-              console.log(response);
-          })
-          .catch(error => {
-              console.log(error);
-          })
-      }
-
     render () {
-
-
       const { property } = this.state;
-
       const {
         id,
         title,

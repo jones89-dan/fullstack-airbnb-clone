@@ -35,7 +35,6 @@ module Api
           token = cookies.signed[:airbnb_session_token]
           session = Session.find_by(token: token)
           user = session.user
-
           @property = Property.find_by(id: params[:id])
           @property.update!(property_params)
           render 'api/properties/show', status: :ok
@@ -47,7 +46,6 @@ module Api
         end
 
     private
-
        def property_params
            params.require(:property).permit(:title, :description, :city, :country, :property_type, :price_per_night, :max_guests, :bedrooms, :beds, :baths, :image)
        end
