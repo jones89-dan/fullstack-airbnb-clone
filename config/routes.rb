@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get '/properties/:id/bookings'                => 'bookings#get_property_bookings'
     post '/createProperty'                        => 'properties#create'
     get '/editProperty/:id'            => 'properties#get_property'
-    patch '/editProperties/:id'            => 'properties#edit'
+    put '/editProperty/:id'            => 'properties#edit'
 
     # sessions
     get '/authenticated'           => 'sessions#authenticated'

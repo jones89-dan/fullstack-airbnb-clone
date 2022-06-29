@@ -37,6 +37,7 @@ module Api
           user = session.user
 
           @property = Property.find_by(id: params[:id])
+          @property.update!(property_params)
           render 'api/properties/show', status: :ok
         end
 

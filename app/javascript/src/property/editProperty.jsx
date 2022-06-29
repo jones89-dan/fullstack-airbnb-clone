@@ -11,12 +11,14 @@ class EditProperty extends React.Component {
         property: {},
     }
 
-   propertyID = window.location.pathname.replace('/editProperty', '');
+   propertyID = window.location.pathname.replace('/editProperty/', '');
 
-   handleChange = (e) => {
+   handleChange = (event) => {
           this.setState({
-            [e.target.name]: e.target.value,
+            [event.target.name]: event.target.value,
           })
+          console.log(event.target.name);
+          console.log(event.target.value);
         }
 
   componentDidMount() {
@@ -30,15 +32,10 @@ class EditProperty extends React.Component {
       })
     }
 
-    setAttributes = (property) => {
-    for (let attribute in property) {
-      this.setState({ [attribute]: property[attribute] })
-    }
-  }
 
   editExistingProperty = (e) => {
         if (e) { e.preventDefault(); }
-        fetch(`/api/editProperty/${propertyID}`, safeCredentials({
+        fetch(`/api/editProperty/${this.propertyID}`, safeCredentials({
             method: 'PUT',
             body: JSON.stringify({
                 property: {
@@ -52,7 +49,7 @@ class EditProperty extends React.Component {
                     bedrooms: this.state.bedrooms,
                     beds: this.state.beds,
                     baths: this.state.baths,
-                    image: this.state.image,
+                    //image: this.state.image,
                 }
             })
         }))
@@ -81,8 +78,8 @@ class EditProperty extends React.Component {
         formData.append('property[image_url]', this.state.image_url);
 
           fetch(`/api/editProperty/${propertyID}`, safeCredentials({
-              method: 'PATCH',
-              body: formData,
+              method: 'PUT',
+              data: formData,
           }))
           .then(handleErrors)
           .then(response => {
@@ -117,7 +114,7 @@ class EditProperty extends React.Component {
       return (
         <Layout>
           <h3>Make changes to your property</h3>
-            <form onSubmit={this.updateProperty}>
+            <form onSubmit={this.editExistingProperty}>
               <input name='title' className="form-control form-control-lg mb-3" type='text' placeholder={title} value={this.state.title || ""} onChange={this.handleChange}  />
               <input name='description' className="form-control form-control-lg mb-3" type='text' placeholder={description} value={this.state.description || ""} onChange={this.handleChange}  />
               <input name='city' className="form-control form-control-lg mb-3" type='text' placeholder={city} value={this.state.city || ""} onChange={this.handleChange}  />
