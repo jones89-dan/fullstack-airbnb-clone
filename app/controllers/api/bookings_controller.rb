@@ -24,6 +24,10 @@ module Api
       render 'api/bookings/index'
     end
 
+    def index
+      
+    end
+
     private
 
     def booking_params

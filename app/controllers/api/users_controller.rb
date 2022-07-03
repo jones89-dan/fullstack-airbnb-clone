@@ -10,6 +10,11 @@ module Api
       end
     end
 
+    def userDetails
+      @user = User.find(params[:id])
+      render json: @user, id: params[:id]
+    end
+
     private
 
     def user_params

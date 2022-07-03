@@ -5,7 +5,12 @@ import { logOut, authenticate, getCurrentUser } from './utils/requests'
 
 const Layout = (props) => {
 
+  const state = {
+    userID: undefined,
+  }
+
   const [currentUser, setCurrentUser] = useState("");
+  const [currentUserID, setUserID] = useState("");
 
 	const handleLogout = function () {
 		getCurrentUser(function (response) {
@@ -18,6 +23,14 @@ const Layout = (props) => {
 			};
 		});
 	};
+
+  const getUserID = function () {
+    authenticate(function (response) {
+      setUserID(response.id)
+      console.log(response.id);
+
+		})
+  };
 
   return (
     <React.Fragment>
@@ -37,6 +50,9 @@ const Layout = (props) => {
 	            </li>
               <li className="nav-item">
 		            <a className="nav-link" href="/login">Login</a>
+	            </li>
+              <li className="nav-item">
+		            <a className="nav-link" onClick={getUserID}>Account</a>
 	            </li>
             </ul>
           </div>
