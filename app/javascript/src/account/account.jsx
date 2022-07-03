@@ -13,6 +13,12 @@ class UserAccount extends React.Component {
     //fetch(`/api/user/${this.userID}`)
   }
 
+  render () {
+
+    return (
+      <Layout></Layout>
+    )
+  }
 
 }
 

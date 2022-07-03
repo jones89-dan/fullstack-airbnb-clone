@@ -20,4 +20,8 @@ class StaticPagesController < ApplicationController
   def editProperty
     render 'editProperty'
   end
+
+  def account
+    render 'account'
+  end
 end

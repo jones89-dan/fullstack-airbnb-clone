@@ -1,2 +1,2 @@
 // user.js
-import '@src/user';
+import 'src/account/account';
