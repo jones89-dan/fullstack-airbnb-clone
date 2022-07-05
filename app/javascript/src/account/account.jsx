@@ -7,13 +7,43 @@ import './user.scss';
 
 class UserAccount extends React.Component {
 
-  //userID = window.location.pathname.replace('/api/', '');
+  state = {
+    property: {},
+  }
+
+  userID = window.location.pathname.replace('/user/', '');
 
   componentDidMount() {
-    //fetch(`/api/user/${this.userID}`)
+    fetch(`/api/user/${this.userID}`)
+      .then(handleErrors)
+      .then(data => {
+        this.setState({
+          property: data.property,
+
+        })
+      })
+
+      console.log(this.property)
   }
 
   render () {
+    const { property } = this.state;
+
+    const {
+      id,
+      title,
+      description,
+      city,
+      country,
+      property_type,
+      price_per_night,
+      max_guests,
+      bedrooms,
+      beds,
+      baths,
+      image,
+      user,
+    } = property
 
     return (
       <Layout></Layout>
