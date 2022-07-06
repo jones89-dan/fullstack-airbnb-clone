@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from '@src/layout';
 import ReactDOM, { useParams } from 'react-dom';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
+import { getUserData } from '@utils/requests';
 import $ from 'jquery';
 import './user.scss';
 
@@ -9,21 +10,21 @@ class UserAccount extends React.Component {
 
   state = {
     property: {},
+    username: undefined,
   }
 
   userID = window.location.pathname.replace('/user/', '');
 
+
   componentDidMount() {
-    fetch(`/api/user/${this.userID}`)
-      .then(handleErrors)
-      .then(data => {
-        this.setState({
-          property: data.property,
-
-        })
-      })
-
-      console.log(this.property)
+      getUserData(this.userID, function (response) {
+        if (response.success == false) {
+          console.log("Ooops, something went wrong");
+        }
+        else {
+          console.log(response);
+        }
+      });
   }
 
   render () {
@@ -43,7 +44,7 @@ class UserAccount extends React.Component {
       baths,
       image,
       user,
-    } = property
+    } = property;
 
     return (
       <Layout></Layout>

@@ -83,7 +83,7 @@ export var  getCurrentUser = function (callback) {
 export var editProperties = function (property_id, callback) {
   var request = {
     type: "PUT",
-    url: "/api/properties/" + id,
+    url: "../api/properties/" + id,
     success: function (response) {
       if (response.success == true) {
       callback();
@@ -92,3 +92,14 @@ export var editProperties = function (property_id, callback) {
   };
   $.ajax(request);
 }
+
+export var getUserData = function (userID, callback) {
+  var request = {
+    type: "GET",
+    url: "../api/user/" + userID,
+    success: function (response) {
+      callback(response);
+    }
+  };
+  $.ajax(request);
+};
