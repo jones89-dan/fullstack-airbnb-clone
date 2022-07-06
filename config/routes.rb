@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get '/BookingIndex'            => 'bookings#index'
 
     # users
-    get '/user/:id'                => 'users#userDetails'
+    get '/user/:id'                => 'properties#getUserProperties'
 
     # stripe webhook
     post '/charges/mark_complete'  => 'charges#mark_complete'

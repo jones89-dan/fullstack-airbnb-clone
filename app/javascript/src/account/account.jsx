@@ -11,6 +11,7 @@ class UserAccount extends React.Component {
   state = {
     property: {},
     username: undefined,
+    properties: [],
   }
 
   userID = window.location.pathname.replace('/user/', '');
@@ -22,7 +23,7 @@ class UserAccount extends React.Component {
           console.log("Ooops, something went wrong");
         }
         else {
-          console.log(response);
+          console.log(response.user.properties);
         }
       });
   }
