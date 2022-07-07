@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     delete '/sessions'             => 'sessions#destroy'
 
     # booking
-    get '/BookingIndex'            => 'bookings#index'
+    get '/user/:id'            => 'bookings#index'
 
     # users
     get '/user/:id'                => 'properties#getUserProperties'

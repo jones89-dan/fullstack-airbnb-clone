@@ -24,7 +24,7 @@ module Api
       render 'api/bookings/index'
     end
 
-    def index
+    def indexBookings
       token = cookies.signed[:airbnb_session_token]
       session = Session.find_by(token: token)
       if session
@@ -33,7 +33,6 @@ module Api
       end
       @bookings = Booking.where(user_id: id)
       render 'api/bookings/index'
-    end
     end
 
     private
