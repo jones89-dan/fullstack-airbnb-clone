@@ -23,7 +23,10 @@ class UserAccount extends React.Component {
           console.log("Ooops, something went wrong");
         }
         else {
-          console.log(response.user.properties);
+          //console.log(this.userID);
+          console.log(response);
+          //let properties = response.data.property;
+          //this.setState({ properties: properties })
         }
       });
   }

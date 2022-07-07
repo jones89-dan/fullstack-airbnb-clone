@@ -37,7 +37,7 @@ module Api
           user = session.user
           @property = Property.find_by(id: params[:id])
           @property.update!(property_params)
-          render 'api/properties/show', status: :ok
+          render 'api/properties/show'
         end
 
         def get_property
@@ -49,9 +49,11 @@ module Api
           token = cookies.signed[:airbnb_session_token]
           session = Session.find_by(token: token)
           if session
-              user = session.user
+            @user = session.user
+            id = @user.id
           end
-          @properties = Property.find_by(user: user)
+          @properties = Property.where(user_id: id)
+          render 'api/properties/indexAccount'
 
         end
 
