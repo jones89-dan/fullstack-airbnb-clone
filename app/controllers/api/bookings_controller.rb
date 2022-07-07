@@ -25,7 +25,15 @@ module Api
     end
 
     def index
-      
+      token = cookies.signed[:airbnb_session_token]
+      session = Session.find_by(token: token)
+      if session
+        @user = session.user
+        id = @user.id
+      end
+      @bookings = Booking.where(user_id: id)
+      render 'api/bookings/index'
+    end
     end
 
     private

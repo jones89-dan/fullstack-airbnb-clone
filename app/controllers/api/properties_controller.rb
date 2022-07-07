@@ -54,7 +54,6 @@ module Api
           end
           @properties = Property.where(user_id: id)
           render 'api/properties/indexAccount'
-
         end
 
     private
