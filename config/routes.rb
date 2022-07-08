@@ -25,11 +25,9 @@ Rails.application.routes.draw do
     get '/authenticated'           => 'sessions#authenticated'
     delete '/sessions'             => 'sessions#destroy'
 
-    # booking
-    get '/user/:id'            => 'bookings#index'
-
+    
     # users
-    get '/user/:id'                => 'properties#getUserProperties'
+    get '/user/:id'                => 'users#getUserData'
 
     # stripe webhook
     post '/charges/mark_complete'  => 'charges#mark_complete'
