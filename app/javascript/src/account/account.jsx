@@ -17,17 +17,18 @@ class UserAccount extends React.Component {
   userID = window.location.pathname.replace('/user/', '');
 
 
-  componentDidMount() {
+  componentDidMount = () => {
       fetch('/api/user/' + this.userID)
       .then(handleErrors)
-      .then(data => {
-        console.log(data)
-        let userProperties = data.user.properties
+      .then(response => {
+        console.log(response.properties)
+        console.log(response.bookings)
+        //let userProperties = response.properties
         this.setState({
-          properties: userProperties,
+          properties: response.properties,
         })
       })
-     //console.log(this.properties)
+     console.log(this.properties)
   }
 
   showProperties = function (evnet) {
