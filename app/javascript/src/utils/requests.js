@@ -93,7 +93,7 @@ export var editProperties = function (property_id, callback) {
   $.ajax(request);
 }
 
-export var getUserData = function (userID, callback) {
+export var getUserData = function (userID) {
   var request = {
     type: "GET",
     url: "../api/user/" + userID,

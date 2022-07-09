@@ -18,25 +18,25 @@ class UserAccount extends React.Component {
 
 
   componentDidMount() {
-      getUserData(this.userID, function (response) {
-        if (response.success == false) {
-          console.log("Ooops, something went wrong");
-        }
-        else {
-          //console.log(this.userID);
-          console.log(response);
-          console.log(response.properties)
-          const userProperties = response.properties
-        }
+      fetch('/api/user/' + this.userID)
+      .then(handleErrors)
+      .then(data => {
+        console.log(data)
+        let userProperties = data.user.properties
+        this.setState({
+          properties: userProperties,
+        })
       })
+     //console.log(this.properties)
   }
 
   showProperties = function (evnet) {
-    this.setState({ properties: userProperties })
+
+    //console.log(data.properties)
   }
 
   render () {
-    const { properties } = this.state;
+    const { properties, property } = this.state;
 
     const {
       id,
@@ -52,7 +52,7 @@ class UserAccount extends React.Component {
       baths,
       image,
       user,
-    } = properties;
+    } = property;
 
     return (
       <Layout>
@@ -66,20 +66,9 @@ class UserAccount extends React.Component {
           >show</button>
         </div>
         <div className="row">
-          {properties.map(property => {
-            return (
-              <div key={property.id} className="col-6 col-lg-4 mb-4 property">
-                <a href={`/property/${property.id}`} className="text-body text-decoration-none">
-                  <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
-                  <p className="text-uppercase mb-0 text-secondary"><small><b>{property.city}</b></small></p>
-                  <h6 className="mb-0">{property.title}</h6>
-                  <p className="mb-0"><small>${property.price_per_night} USD/night</small></p>
-                </a>
-              </div>
-            )
-          })}
-        </div>
-        </div>
+
+         </div>
+       </div>
       </Layout>
     )
   }
