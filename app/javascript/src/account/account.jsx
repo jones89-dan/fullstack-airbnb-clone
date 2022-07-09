@@ -25,14 +25,18 @@ class UserAccount extends React.Component {
         else {
           //console.log(this.userID);
           console.log(response);
-          //let properties = response.data.property;
-          //this.setState({ properties: properties })
+          console.log(response.properties)
+          const userProperties = response.properties
         }
-      });
+      })
+  }
+
+  showProperties = function (evnet) {
+    this.setState({ properties: userProperties })
   }
 
   render () {
-    const { property } = this.state;
+    const { properties } = this.state;
 
     const {
       id,
@@ -48,10 +52,35 @@ class UserAccount extends React.Component {
       baths,
       image,
       user,
-    } = property;
+    } = properties;
 
     return (
-      <Layout></Layout>
+      <Layout>
+      <div className="container pt-4">
+        <h4 className="mb-1">Top-rated places to stay</h4>
+        <p className="text-secondary mb-3">Explore some of the best-reviewed stays in the world</p>
+        <div className="text-center">
+          <button
+            className="btn btn-light mb-4"
+            onClick={this.showProperties}
+          >show</button>
+        </div>
+        <div className="row">
+          {properties.map(property => {
+            return (
+              <div key={property.id} className="col-6 col-lg-4 mb-4 property">
+                <a href={`/property/${property.id}`} className="text-body text-decoration-none">
+                  <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
+                  <p className="text-uppercase mb-0 text-secondary"><small><b>{property.city}</b></small></p>
+                  <h6 className="mb-0">{property.title}</h6>
+                  <p className="mb-0"><small>${property.price_per_night} USD/night</small></p>
+                </a>
+              </div>
+            )
+          })}
+        </div>
+        </div>
+      </Layout>
     )
   }
 
