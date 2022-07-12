@@ -5,7 +5,6 @@ import $ from 'jquery';
 import './user.scss';
 
 class UserProperties extends React.Component {
-
   state = {
     authenticated: false,
     property: {},
@@ -20,7 +19,6 @@ class UserProperties extends React.Component {
       .then(response => {
         console.log(response.properties)
         console.log(response.bookings)
-        //let userProperties = response.properties
         that.setState({
           properties: response.properties,
         })
@@ -54,8 +52,6 @@ class UserProperties extends React.Component {
        </div>
     )
   }
-
-
 }
 
 export default UserProperties

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from '@src/layout';
 import ReactDOM, { useParams } from 'react-dom';
 import UserProperties from './userPropertiesWidget';
+import UserBookings from './userBookingsWidget';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import { getUserData } from '@utils/requests';
 import $ from 'jquery';
@@ -10,10 +11,10 @@ import './user.scss';
 class UserAccount extends React.Component {
 
   state = {
-    property: {},
+    authenticated: false,
     username: undefined,
-    properties: [],
     showUserProperties: false,
+    showUserBookings: false,
   }
 
   userID = window.location.pathname.replace('/user/', '');
@@ -22,8 +23,12 @@ class UserAccount extends React.Component {
     this.setState({ showUserProperties: true })
   }
 
+  showBookings = () => {
+    this.setState({ showUserBookings: true })
+  }
+
   render () {
-    const { showUserProperties } = this.state;
+    const { showUserProperties, showUserBookings } = this.state;
 
     return (
       <Layout>
@@ -36,6 +41,12 @@ class UserAccount extends React.Component {
             onClick={this.showProperties}
           >show properties</button>
           {showUserProperties && <UserProperties userID={this.userID}/>}
+
+          <button
+            className="btn btn-light mb-4"
+            onClick={this.showBookings}
+          >show bookings</button>
+          {showUserBookings && <UserBookings userID={this.userID}/>}
         </div>
        </div>
       </Layout>
