@@ -38,6 +38,7 @@ class UserBookings extends React.Component {
           {bookings.map(booking => {
             return (
               <ul key={booking.id}>
+                <li>{booking.property_id}</li>
                 <li>{booking.start_date}</li>
                 <li>{booking.end_date}</li>
               </ul>
