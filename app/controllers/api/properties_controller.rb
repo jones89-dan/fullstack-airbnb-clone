@@ -45,6 +45,19 @@ module Api
           return render json: { error: 'cannot find property' }, status: :not_found if !property
         end
 
+        def getUserProperties
+          token = cookies.signed[:airbnb_session_token]
+          session = Session.find_by(token: token)
+
+          if session
+            @user = session.user
+            id = @user.id
+          end
+          @properties = Property.where(user_id: id)
+
+          render 'api/accounts/indexAccountProperties'
+        end
+
     private
        def property_params
            params.require(:property).permit(:title, :description, :city, :country, :property_type, :price_per_night, :max_guests, :bedrooms, :beds, :baths, :image)

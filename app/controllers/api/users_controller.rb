@@ -18,12 +18,14 @@ module Api
     def getUserData
       token = cookies.signed[:airbnb_session_token]
       session = Session.find_by(token: token)
+
       if session
         @user = session.user
         id = @user.id
       end
       @properties = Property.where(user_id: id)
       @bookings = Booking.where(user_id: id)
+
       render 'api/accounts/indexAccount'
     end
 

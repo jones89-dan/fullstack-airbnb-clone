@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Layout from '@src/layout';
 import ReactDOM, { useParams } from 'react-dom';
-import UserProperties from './userPropertiesWidget';
-import UserBookings from './userBookingsWidget';
+//import UserProperties from './userPropertiesWidget';
+//import UserBookings from './userBookingsWidget';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import { getUserData } from '@utils/requests';
 import $ from 'jquery';
@@ -20,7 +20,7 @@ class UserAccount extends React.Component {
   userID = window.location.pathname.replace('/user/', '');
 
   showProperties = () => {
-    this.setState({ showUserProperties: true })
+    window.location.pathname.replace('../accountProperties');
   }
 
   showBookings = () => {
@@ -40,7 +40,7 @@ class UserAccount extends React.Component {
             className="btn btn-light mb-4"
             onClick={this.showProperties}
           >show properties</button>
-          {showUserProperties && <UserProperties userID={this.userID}/>}
+
 
           <button
             className="btn btn-light mb-4"

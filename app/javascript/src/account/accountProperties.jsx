@@ -1,4 +1,5 @@
 import React from 'react';
+import Layout from '@src/layout';
 import 'react-dates/initialize';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import $ from 'jquery';
@@ -14,11 +15,10 @@ class UserProperties extends React.Component {
 
   componentDidMount = () => {
     const that = this;
-      fetch('/api/user/' + this.userID)
+      fetch('/api/user/' + this.userID + 'accountProperties')
       .then(handleErrors)
       .then(response => {
         console.log(response.properties)
-        console.log(response.bookings)
         that.setState({
           properties: response.properties,
         })
@@ -29,6 +29,7 @@ class UserProperties extends React.Component {
     const { properties, property } = this.state;
 
     return (
+      <Layout>
       <div className="container pt-4">
         <h4 className="mb-1">Your Properites!</h4>
         <p className="text-secondary mb-3"></p>
@@ -50,8 +51,14 @@ class UserProperties extends React.Component {
           })}
          </div>
        </div>
+      </Layout>
     )
   }
 }
 
-export default UserProperties
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <UserAccount/>,
+    document.body.appendChild(document.createElement('div')),
+  )
+})

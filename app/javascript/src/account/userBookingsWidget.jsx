@@ -10,6 +10,7 @@ class UserBookings extends React.Component {
     username: undefined,
     booking: {},
     bookings: [],
+    property: {},
   }
 
   componentDidMount = () => {
@@ -50,4 +51,9 @@ class UserBookings extends React.Component {
   }
 }
 
-export default UserBookings
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <UserAccount/>,
+    document.body.appendChild(document.createElement('div')),
+  )
+})
