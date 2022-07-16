@@ -39,7 +39,7 @@ class UserAccount extends React.Component {
         <div className="text-center">
           <Router>
             <Link to={"/user/" + this.userID + "/accountProperties"}
-            onClick={()=>history.push("/user/" + this.userID)}>
+            onClick={()=>history.push("/user/" + this.userID + "/accountProperties")}>
             <button className="btn btn-light mb-4">show properties</button></Link>
           </Router>
 

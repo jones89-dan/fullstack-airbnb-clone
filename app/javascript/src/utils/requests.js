@@ -60,7 +60,7 @@ export var logOut = function (callback) {
 export var authenticate = function (callback) {
   var request = {
     type: 'GET',
-    url: '../api/authenticated',
+    url: '/api/authenticated',
     success: function (response) {
       callback(response);
     }
