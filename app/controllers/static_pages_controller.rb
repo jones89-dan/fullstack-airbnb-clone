@@ -3,7 +3,6 @@ class StaticPagesController < ApplicationController
     render 'home'
   end
 
-
   def property
     @data = { property_id: params[:id] }.to_json
     render 'property'
@@ -27,5 +26,9 @@ class StaticPagesController < ApplicationController
 
   def accountProperties
     render 'accountProperties'
+  end
+
+  def accountBookings
+    render 'accountBookings'
   end
 end

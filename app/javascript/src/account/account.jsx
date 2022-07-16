@@ -40,21 +40,17 @@ class UserAccount extends React.Component {
           <Router>
             <Link to={"/user/" + this.userID + "/accountProperties"}
             onClick={()=>history.push("/user/" + this.userID + "/accountProperties")}>
-            <button className="btn btn-light mb-4">show properties</button></Link>
+            <button className="btn btn-light mb-4">Show Properties</button></Link>
+
+            <Link to={"/user/" + this.userID + "/accountBookings"}
+            onClick={()=>history.push("/user/" + this.userID + "/accountBookings")}>
+            <button className="btn btn-light mb-4">Show Bookings</button></Link>
           </Router>
-
-
-          <button
-            className="btn btn-light mb-4"
-            onClick={this.showBookings}
-          >show bookings</button>
-          {showUserBookings && <UserBookings userID={this.userID}/>}
         </div>
        </div>
       </Layout>
     )
   }
-
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM, { useParams } from 'react-dom';
 import 'react-dates/initialize';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import $ from 'jquery';
@@ -53,7 +54,7 @@ class UserBookings extends React.Component {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <UserAccount/>,
+    <UserBookings/>,
     document.body.appendChild(document.createElement('div')),
   )
 })

@@ -47,7 +47,7 @@ export var createProperty = function (title, description, city, country, propert
 export var logOut = function (callback) {
 	var request = {
 		type: 'DELETE',
-		url: '../api/sessions',
+		url: '/api/sessions',
 		success: function (response) {
 			callback(response);
       console.log("logged out")
@@ -83,7 +83,7 @@ export var  getCurrentUser = function (callback) {
 export var editProperties = function (property_id, callback) {
   var request = {
     type: "PUT",
-    url: "../api/properties/" + id,
+    url: "/api/properties/" + id,
     success: function (response) {
       if (response.success == true) {
       callback();
@@ -96,7 +96,7 @@ export var editProperties = function (property_id, callback) {
 export var getUserData = function (userID) {
   var request = {
     type: "GET",
-    url: "../api/user/" + userID,
+    url: "/api/user/" + userID,
     success: function (response) {
       callback(response);
     }
