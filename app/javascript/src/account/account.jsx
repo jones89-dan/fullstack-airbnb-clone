@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from '@src/layout';
 import ReactDOM, { useParams } from 'react-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 //import UserProperties from './userPropertiesWidget';
 //import UserBookings from './userBookingsWidget';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
@@ -20,7 +21,7 @@ class UserAccount extends React.Component {
   userID = window.location.pathname.replace('/user/', '');
 
   showProperties = () => {
-    window.location.pathname.replace('../accountProperties');
+    window.location.pathname.replace('', 'accountProperties');
   }
 
   showBookings = () => {
@@ -36,10 +37,11 @@ class UserAccount extends React.Component {
         <h4 className="mb-1">Welcome </h4>
         <p className="text-secondary mb-3"></p>
         <div className="text-center">
-          <button
-            className="btn btn-light mb-4"
-            onClick={this.showProperties}
-          >show properties</button>
+          <Router>
+            <Link to={"/user/" + this.userID + "/accountProperties"}
+            onClick={()=>history.push("/user/" + this.userID)}>
+            <button className="btn btn-light mb-4">show properties</button></Link>
+          </Router>
 
 
           <button

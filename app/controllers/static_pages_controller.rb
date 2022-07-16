@@ -24,4 +24,8 @@ class StaticPagesController < ApplicationController
   def account
     render 'account'
   end
+
+  def accountProperties
+    render 'accountProperties'
+  end
 end

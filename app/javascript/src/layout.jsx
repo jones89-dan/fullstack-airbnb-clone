@@ -28,7 +28,7 @@ const Layout = (props) => {
     authenticate(function (response) {
       setUserID(response.id)
       console.log(response.id);
-      window.location.replace('/user/' + response.id);
+      window.location.replace('/user/' + response.id, '');
 
 		})
   };

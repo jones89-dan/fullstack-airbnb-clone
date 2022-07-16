@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM, { useParams } from 'react-dom';
 import Layout from '@src/layout';
 import 'react-dates/initialize';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
@@ -15,7 +16,7 @@ class UserProperties extends React.Component {
 
   componentDidMount = () => {
     const that = this;
-      fetch('/api/user/' + this.userID + 'accountProperties')
+      fetch('/api/user/' + this.userID + '/accountProperties')
       .then(handleErrors)
       .then(response => {
         console.log(response.properties)
@@ -58,7 +59,7 @@ class UserProperties extends React.Component {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <UserAccount/>,
+    <UserProperties/>,
     document.body.appendChild(document.createElement('div')),
   )
 })
