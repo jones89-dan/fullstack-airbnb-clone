@@ -16,7 +16,7 @@ class UserBookings extends React.Component {
 
   componentDidMount = () => {
     const that = this;
-      fetch('/api/user/' + this.userID)
+      fetch('/api/user/' + this.userID + '/accountBookings')
       .then(handleErrors)
       .then(response => {
         console.log(response.bookings)
