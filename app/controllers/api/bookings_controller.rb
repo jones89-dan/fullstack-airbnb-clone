@@ -45,7 +45,8 @@ module Api
       end
 
       @bookings = Booking.where(user_id: id)
-
+    #  @propertyTitle = Property.find_by(id: @bookings.property_id)
+  
       render 'api/accounts/indexAccountBookings'
     end
 
