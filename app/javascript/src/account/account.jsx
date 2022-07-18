@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Layout from '@src/layout';
 import ReactDOM, { useParams } from 'react-dom';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-//import UserProperties from './userPropertiesWidget';
-//import UserBookings from './userBookingsWidget';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import { getUserData } from '@utils/requests';
 import $ from 'jquery';
