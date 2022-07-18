@@ -27,10 +27,12 @@ module Api
     def indexBookings
       token = cookies.signed[:airbnb_session_token]
       session = Session.find_by(token: token)
+
       if session
         @user = session.user
         id = @user.id
       end
+
       @bookings = Booking.where(user_id: id)
       render 'api/bookings/index'
     end
@@ -45,13 +47,10 @@ module Api
       end
 
       @bookings = Booking.where(user_id: id)
-    #  @propertyTitle = Property.find_by(id: @bookings.property_id)
-  
       render 'api/accounts/indexAccountBookings'
     end
 
     private
-
     def booking_params
       params.require(:booking).permit(:property_id, :start_date, :end_date)
     end

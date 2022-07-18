@@ -103,3 +103,14 @@ export var getUserData = function (userID) {
   };
   $.ajax(request);
 };
+
+export var isPaid = function (bookingID) {
+  var request = {
+    type: "GET",
+    url: "/api/" + bookingID + "/paid",
+    success: function (response) {
+      callback(response);
+    }
+  };
+  $.ajax(request);
+};
