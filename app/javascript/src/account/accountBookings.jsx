@@ -27,6 +27,31 @@ class UserBookings extends React.Component {
       })
   }
 
+  initiateStripeCheckout = (booking_id) => {
+    return fetch(`/api/charges?booking_id=${booking_id}&cancel_url=${window.location.pathname}`, safeCredentials({
+      method: 'POST',
+    }))
+    .then(handleErrors)
+    .then(response => {
+      const stripe = Stripe(process.env.STRIPE_PUBLISHABLE_KEY);
+
+      stripe.redirectToCheckout({
+        sessionId: response.charge.checkout_session_id,
+      }).then((result) => {
+        console.log('result error', result.error.message);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
+  completeBooking = (e) => {
+    e.preventDefault();
+    this.initiateStripeCheckout(e.target.value);
+  }
+
+
   render () {
     const { bookings, booking, property } = this.state;
 
@@ -47,6 +72,11 @@ class UserBookings extends React.Component {
                          <small>{booking.property.property_type} hosted by {booking.property.host}</small>
                        </a>
                        <hr className="my-2"></hr>
+                       <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
+                        {booking.paid ?
+                        <button className="btn btn-success btn-sm ms-5 px-5">paid</button>
+                         :
+                        <button className="btn btn-danger btn-sm m-5" value={booking.id} onClick={this.completeBooking}>complete checkout</button>}
                        <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
                      </div>
                    </div>
