@@ -77,7 +77,6 @@ class UserBookings extends React.Component {
                         <button className="btn btn-success btn-sm ms-5 px-5">paid</button>
                          :
                         <button className="btn btn-danger btn-sm m-5" value={booking.id} onClick={this.completeBooking}>complete checkout</button>}
-                       <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
                      </div>
                    </div>
                  </div>
