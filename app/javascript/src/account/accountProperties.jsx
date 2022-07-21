@@ -12,6 +12,8 @@ class UserProperties extends React.Component {
     property: {},
     username: undefined,
     properties: [],
+    propertyID: undefined,
+
   }
 
   componentDidMount = () => {
@@ -24,6 +26,17 @@ class UserProperties extends React.Component {
           properties: response.properties,
         })
       })
+  }
+
+  getBookings = (e) => {
+    e.preventDefault();
+    var propertyID = e.target.value;
+
+    fetch('/api/properties/' + propertyID + '/bookings')
+    .then(handleErrors)
+    .then(response => {
+      console.log(response)
+    })
   }
 
   render () {
@@ -47,6 +60,7 @@ class UserProperties extends React.Component {
                   <h6 className="mb-0">{property.title}</h6>
                   <p className="mb-0"><small>${property.price_per_night} USD/night</small></p>
                 </a>
+                  <button className="btn btn-danger btn-sm" value={property.id} onClick={this.getBookings}>Get bookings</button>
               </div>
             )
           })}
