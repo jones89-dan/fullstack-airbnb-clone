@@ -13,12 +13,14 @@ class UserProperties extends React.Component {
     username: undefined,
     properties: [],
     propertyID: undefined,
+    booking: {},
+    bookings: [],
 
   }
 
   componentDidMount = () => {
     const that = this;
-      fetch('/api/user/' + this.userID + '/accountProperties')
+    fetch('/api/user/' + this.userID + '/accountProperties')
       .then(handleErrors)
       .then(response => {
         console.log(response.properties)
@@ -33,14 +35,17 @@ class UserProperties extends React.Component {
     var propertyID = e.target.value;
     console.log(propertyID)
     fetch('/api/properties/' + propertyID + '/bookings')
-    .then(handleErrors)
-    .then(response => {
-      console.log(response)
+      .then(handleErrors)
+      .then(response => {
+      console.log(response.bookings)
+      this.setState({
+        bookings: response.bookings,
+      })
     })
   }
 
   render () {
-    const { properties, property } = this.state;
+    const { properties, property, bookings, booking } = this.state;
 
     return (
       <Layout>
@@ -61,6 +66,19 @@ class UserProperties extends React.Component {
                   <p className="mb-0"><small>${property.price_per_night} USD/night</small></p>
                 </a>
                   <button className="btn btn-danger btn-sm" value={property.id} onClick={this.getBookings}>Upcoming Bookings</button>
+                  {bookings.map(booking => {
+                    return (
+                      <div key={booking.id} className="my-4 justify-content-center">
+                        <div className="col-9 gx-0 property-booking my-1">
+                         <div className="d-flex justify-content-between">
+                           <div className="p-4 ps-5">
+                             <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
+                             </div>
+                           </div>
+                         </div>
+                        </div>
+                        )
+                      })}
               </div>
             )
           })}
