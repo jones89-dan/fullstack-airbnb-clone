@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM, { useParams } from 'react-dom';
 import Layout from '@src/layout';
 import 'react-dates/initialize';
@@ -29,6 +29,7 @@ class UserProperties extends React.Component {
         })
       })
   }
+
 
   getBookings = (e) => {
     e.preventDefault();
@@ -67,23 +68,25 @@ class UserProperties extends React.Component {
                 </a>
                   <button className="btn btn-danger btn-sm" value={property.id} onClick={this.getBookings}>Upcoming Bookings</button>
                   {bookings.map(booking => {
-                    return (
-                      <div key={booking.id} className="my-4 justify-content-center">
-                        <div className="col-9 gx-0 property-booking my-1">
-                         <div className="d-flex justify-content-between">
-                           <div className="p-4 ps-5">
-                             <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
-                             </div>
-                           </div>
-                         </div>
+                    if (property.id == booking.property_id) {
+                      return (
+                        <div key={booking.id} className="mb-0">
+                          <div className="col-9 gx-0 property-booking my-1">
+                            <div className="d-flex justify-content-between">
+                                <small className="mb-2 justify-content-between">Booking from {booking.start_date} to {booking.end_date}</small>
+                            </div>
+                          </div>
+                          <div className="col-9 gx-0 property-booking my-1">
+                            <div className="d-flex justify-content-between">
+                                {booking.paid ? <small>Paid</small> : <small>Un-paid</small>}
+                            </div>
+                          </div>
                         </div>
-                        )
-                      })}
-              </div>
-            )
-          })}
+                    )}})}
+                </div>
+              )})}
+            </div>
          </div>
-       </div>
       </Layout>
     )
   }
