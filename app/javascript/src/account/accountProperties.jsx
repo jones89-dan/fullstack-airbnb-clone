@@ -15,7 +15,6 @@ class UserProperties extends React.Component {
     propertyID: undefined,
     booking: {},
     bookings: [],
-
   }
 
   componentDidMount = () => {
@@ -30,6 +29,9 @@ class UserProperties extends React.Component {
       })
   }
 
+  getUserName = () => {
+    fetch
+  }
 
   getBookings = (e) => {
     e.preventDefault();
@@ -45,8 +47,9 @@ class UserProperties extends React.Component {
     })
   }
 
+
   render () {
-    const { properties, property, bookings, booking } = this.state;
+    const { properties, property, bookings, booking, user } = this.state;
 
     return (
       <Layout>
@@ -73,7 +76,7 @@ class UserProperties extends React.Component {
                         <div key={booking.id} className="mb-0">
                           <div className="col-9 gx-0 property-booking my-1">
                             <div className="d-flex justify-content-between">
-                                <small className="mb-2 justify-content-between">Booking from {booking.start_date} to {booking.end_date}</small>
+                                <small className="mb-2 justify-content-between">{booking.property.host} Booking from {booking.start_date} to {booking.end_date}</small>
                             </div>
                           </div>
                           <div className="col-9 gx-0 property-booking my-1">
