@@ -22,7 +22,7 @@ export var createProperty = function (title, description, city, country, propert
   formData.set('property[bedrooms]', bedrooms);
   formData.set('property[beds]', beds);
   formData.set('property[baths]', baths);
-  //formData.set('property[image]', img);
+  formData.set('property[image_url]', img);
 
   var request = {
     type: 'POST',

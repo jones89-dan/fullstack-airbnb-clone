@@ -5,6 +5,6 @@ json.bookings do
     json.start_date  booking.start_date
     json.end_date    booking.end_date
     json.paid        booking.is_paid?
-    json.user       booking.user.username
+    json.user        booking.user.username
   end
 end

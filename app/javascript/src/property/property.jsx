@@ -46,13 +46,13 @@ class Property extends React.Component {
       bedrooms,
       beds,
       baths,
-      image,
+      image_url,
       user,
     } = property
 
     return (
       <Layout>
-        <div className="property-image mb-3" style={{ backgroundImage: `asset-url(${image})` }} />
+        <div className="property-image mb-3" style={{ backgroundImage: `asset-url(${property.image_url})` }} />
         <div className="container">
           <div className="row">
             <div className="info col-12 col-lg-7">
