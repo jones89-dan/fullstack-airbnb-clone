@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/user/:id'                     => 'static_pages#account'
   get '/user/:id/accountProperties'   => 'static_pages#accountProperties'
   get '/user/:id/accountBookings'     => 'static_pages#accountBookings'
+  get '/booking/:id/success'          => 'static_pages#bookingSuccess'
 
 
   namespace :api do
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
     put '/editProperty/:id'           => 'properties#edit'
     get '/user/:id/accountProperties' => 'properties#getUserProperties'
 
-
     # sessions
     get '/authenticated'              => 'sessions#authenticated'
     delete '/sessions'                => 'sessions#destroy'
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     # bookings
     get '/user/:id/accountBookings'   => 'bookings#getUserBookings'
     get '/:id/paid'                   => 'bookings#is_paid'
+
 
 
     # users
