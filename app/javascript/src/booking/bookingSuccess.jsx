@@ -6,6 +6,24 @@ import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import $ from 'jquery';
 
 class BookingSuccess extends React.Component {
+  state = {
+    booking: {},
+  }
+
+  pathString = window.location.pathname.replace('/user/', '');
+  bookingID = this.pathString.replace(/[^0-9]/g, "");
+
+  componentDidMount = () => {
+    const that = this;
+      fetch('/api/booking/' + this.bookingID)
+      .then(handleErrors)
+      .then(response => {
+        console.log(response.bookings)
+        that.setState({
+          bookings: response.bookings,
+        })
+      })
+    }
 
   render () {
     return (

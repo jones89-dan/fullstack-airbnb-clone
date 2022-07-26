@@ -50,8 +50,13 @@ module Api
       render 'api/accounts/indexAccountBookings'
     end
 
+    def getBookingInfo
+     @booking = Booking.find_by(id: params[:id])
+      render 'api/bookings/show'
+    end
+
     private
-    
+
     def booking_params
       params.require(:booking).permit(:property_id, :start_date, :end_date)
     end

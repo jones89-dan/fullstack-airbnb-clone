@@ -33,8 +33,7 @@ Rails.application.routes.draw do
     # bookings
     get '/user/:id/accountBookings'   => 'bookings#getUserBookings'
     get '/:id/paid'                   => 'bookings#is_paid'
-
-
+    get '/booking/:id'                => 'bookings#getBookingInfo'
 
     # users
     # get '/user/:id'                  => 'users#getUserData'
