@@ -51,7 +51,7 @@ module Api
     end
 
     def getBookingInfo
-     @booking = Booking.find_by(id: params[:id])
+      @booking = Booking.find_by(id: params[:id])
       render 'api/bookings/show'
     end
 
