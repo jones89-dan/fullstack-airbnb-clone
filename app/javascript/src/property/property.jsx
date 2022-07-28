@@ -17,6 +17,7 @@ class Property extends React.Component {
     fetch(`/api/properties/${this.props.property_id}`)
       .then(handleErrors)
       .then(data => {
+        console.log(data.property)
         this.setState({
           property: data.property,
           loading: false,
@@ -52,7 +53,7 @@ class Property extends React.Component {
 
     return (
       <Layout>
-        <div className="property-image mb-3" style={{ backgroundImage: `asset-url(${property.image_url})` }} />
+        <div className="property-image mb-3" style={{ backgroundImage: `url(${image_url})` }} />
         <div className="container">
           <div className="row">
             <div className="info col-12 col-lg-7">
