@@ -73,12 +73,14 @@ class Property extends React.Component {
               </div>
               <hr />
               <p>{description}</p>
+              <Router>
+                <Link to={"/editProperty/" + propId} onClick={()=>history.push("/editProperty/" + id)} params={{ property_id: id }}>
+                  <button type="submit" className="btn btn-large btn-danger btn-block">Edit</button>
+                </Link>
+              </Router>
             </div>
             <div className="col-12 col-lg-5">
               <BookingWidget property_id={id} price_per_night={price_per_night} />
-              <Router>
-                <Link to={"/editProperty/" + propId} onClick={()=>history.push("/editProperty/" + id)} params={{ property_id: id }}>Edit</Link>
-              </Router>
             </div>
           </div>
         </div>
