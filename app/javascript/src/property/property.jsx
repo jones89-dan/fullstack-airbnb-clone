@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Layout from '@src/layout';
 import BookingWidget from './bookingWidget';
 import { handleErrors } from '@utils/fetchHelper';
+import { getCurrentUser } from '@utils/requests'
 
 import './property.scss';
 
@@ -11,6 +12,7 @@ class Property extends React.Component {
   state = {
     property: {},
     loading: true,
+    currentUser: undefined,
   }
 
   componentDidMount() {
@@ -25,10 +27,16 @@ class Property extends React.Component {
       })
 
       console.log(process.env.STRIPE_PUBLISHABLE_KEY)
+
+      getCurrentUser((response) => {
+        this.setState({
+          currentUser: response.username,
+        })
+      })
   }
 
   render () {
-    const { property, loading } = this.state;
+    const { property, loading, currentUser } = this.state;
     if (loading) {
       return <p>loading...</p>;
     };
@@ -73,11 +81,12 @@ class Property extends React.Component {
               </div>
               <hr />
               <p>{description}</p>
-              <Router>
-                <Link to={"/editProperty/" + propId} onClick={()=>history.push("/editProperty/" + id)} params={{ property_id: id }}>
-                  <button type="submit" className="btn btn-large btn-danger btn-block">Edit</button>
-                </Link>
-              </Router>
+              {user.username == currentUser ?
+                <Router>
+                  <Link to={"/editProperty/" + propId} onClick={()=>history.push("/editProperty/" + id)} params={{ property_id: id }}>
+                    <button type="submit" className="btn btn-large btn-danger btn-block">Edit</button>
+                  </Link>
+                </Router> : <p></p>}
             </div>
             <div className="col-12 col-lg-5">
               <BookingWidget property_id={id} price_per_night={price_per_night} />
