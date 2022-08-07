@@ -21,9 +21,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Test fix for PG database error
-gem 'bundler', '~> 2.0.2'
-
 # Use Stripe for receiving payments
 gem 'stripe'
 
