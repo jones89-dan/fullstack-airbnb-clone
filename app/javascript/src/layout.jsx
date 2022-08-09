@@ -59,7 +59,6 @@ const Layout = (props) => {
                 <li className="nav-item">
                   <a className="nav-link" href="/createProperty">Add</a>
                 </li>
-                // Show logout only if user is authenticated.
                 { authenticated ?
                 <li className="nav-item">
    		            <a className="nav-link" onClick={handleLogout}>Logout</a>
