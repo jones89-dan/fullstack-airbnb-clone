@@ -12,6 +12,7 @@ class Home extends React.Component {
     total_pages: null,
     next_page: null,
     loading: true,
+    isAuthenticated: null,
   }
 
   componentDidMount() {
@@ -25,6 +26,8 @@ class Home extends React.Component {
           loading: false,
         })
       })
+
+      this.checkAuthentication()
   }
 
   loadMore = () => {
@@ -44,18 +47,30 @@ class Home extends React.Component {
       })
   }
 
+  checkAuthentication = () => {
+    fetch('/api/authenticated')
+      .then(handleErrors)
+      .then(response => {
+        this.setState({
+          isAuthenticated: response.authenticated,
+        })
+      })
+  }
+
   render () {
-    const { properties, next_page, loading } = this.state;
+   const { properties, next_page, loading, loginMessage, isAuthenticated} = this.state;
    return (
      <Layout>
+
        <div className="container pt-4">
+
          <h4 className="mb-1">Top-rated places to stay</h4>
          <p className="text-secondary mb-3">Explore some of the best-reviewed stays in the world</p>
          <div className="row">
            {properties.map(property => {
              return (
                <div key={property.id} className="col-6 col-lg-4 mb-4 property">
-                 <a href={`/property/${property.id}`} className="text-body text-decoration-none">
+                 <a onClick={this.checkAuthentication} href={isAuthenticated ? '/property/' + property.id : '/login' } className="text-body text-decoration-none">
                    <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
                    <p className="text-uppercase mb-0 text-secondary"><small><b>{property.city}</b></small></p>
                    <h6 className="mb-0">{property.title}</h6>
