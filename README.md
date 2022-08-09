@@ -1,6 +1,6 @@
 # README
 
-Visit the the productions site https://air-bnb-on-rails.herokuapp.com/
+Visit the the production site https://air-bnb-on-rails.herokuapp.com/
 deployed to Heroku.
 
 Visit [Altcademy Classroom](https://www.altcademy.com/classroom/) for more instructions.
