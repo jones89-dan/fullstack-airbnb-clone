@@ -38,6 +38,9 @@ const CreateProperty = () => {
       }
       else {
         console.log("Property added successfully!");
+        alert("Property added successfully!");
+        window.location.replace("./");
+
       }
     });
   }
