@@ -31,4 +31,8 @@ class StaticPagesController < ApplicationController
   def accountBookings
     render 'accountBookings'
   end
+
+  def bookingSuccess
+    render 'bookingSuccess'
+  end
 end

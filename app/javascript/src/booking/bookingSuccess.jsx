@@ -4,6 +4,7 @@ import ReactDOM, { useParams } from 'react-dom';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import $ from 'jquery';
+import './bookingSuccess.scss';
 
 class BookingSuccess extends React.Component {
   state = {
