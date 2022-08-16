@@ -74,7 +74,7 @@ const CreateProperty = () => {
             <h3>Add a Property</h3>
           </div>
             <input name='title' type="text" className="form-control form-control-lg title mb-3" placeholder="Title"/>
-            <input name='description' type="text" className="form-control form-control-lgdescription mb-3" placeholder="Description"/>
+            <input name='description' type="text" className="form-control form-control-lg description mb-3" placeholder="Description"/>
             <input name='city' type="text" className="form-control form-control-lg city mb-3" placeholder="City"/>
             <input name='country' type="text" className="form-control form-control-lg country mb-3" placeholder="Country"/>
             <input name='property_type' type="text" className="form-control form-control-lg property-type mb-3" placeholder="Property Type"/>
@@ -83,7 +83,7 @@ const CreateProperty = () => {
             <input name='bedrooms' type="text" className="form-control form-control-lg bedrooms mb-3" placeholder="Bedrooms"/>
             <input name='beds' type="text" className="form-control form-control-lg beds mb-3" placeholder="Beds"/>
             <input name='baths' type="text" className="form-control form-control-lg baths mb-3" placeholder="Baths"/>
-            
+
             <label id="upload-image-btn" htmlFor="imageUpload">Upload image</label>
             <img id="image-preview" src="" style={{display: 'none'}} alt="image preview"/>
             <input type="file" id="imageUpload" name="image" accept="image/*" onChange={handleImage}></input>
