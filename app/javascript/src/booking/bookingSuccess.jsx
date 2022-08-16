@@ -39,6 +39,7 @@ class BookingSuccess extends React.Component {
           <div className="col-9 gx-0 property-booking my-1">
            <div className="d-flex justify-content-between">
              <div className="p-4 ps-5">
+              <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
                <a href={`/property/${property.property_id}`} className="text-body text-decoration-none">
                  <h6 className="m-0">{property.title} <span className="fw-normal">in</span> {booking.city}</h6>
                  <small>{property.property_type} hosted by {property.host}</small>
