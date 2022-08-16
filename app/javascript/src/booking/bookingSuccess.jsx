@@ -36,17 +36,18 @@ class BookingSuccess extends React.Component {
     return (
       <Layout>
        <div className="container pt-4">
-        <div className="row">
-          <div className="col-12 property">
-            <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
-              <a href={`/property/${property.property_id}`} className="text-body text-decoration-none">
-                <h6 className="m-0">{property.title} <span className="fw-normal">in</span> {property.city}</h6>
-                <small>{property.property_type} hosted by {property.host}</small>
-              </a>
+        <h1>Booking Success!</h1>
+          <div className="row">
+            <div className="col-12 property">
+              <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
+                <a href={`/property/${property.property_id}`} className="text-body text-decoration-none">
+                  <h6 className="m-0">{property.title} <span className="fw-normal">in</span> {property.city}</h6>
+                  <p>{property.property_type} hosted by {property.host}</p>
+                </a>
                 <hr className="my-2"></hr>
-                <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
+                <p className="mb-3">from {booking.start_date} to {booking.end_date}</p>
+            </div>
           </div>
-         </div>
         </div>
       </Layout>
     )
