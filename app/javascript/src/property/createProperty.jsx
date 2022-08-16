@@ -110,7 +110,7 @@ const CreateProperty = () => {
 
           <button type="submit" id="sign-up-btn" className="btn btn-default btn-warning pull-right">Add Property</button>
         </form>
-      </div
+      </div>
     </Layout>
 
   )
