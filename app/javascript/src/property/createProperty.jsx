@@ -71,48 +71,27 @@ const CreateProperty = () => {
      <div className="container pt-4">
         <form className="p-2 rounded" onSubmit={newProperty}>
           <div className="new-to-t">
-            <h1>Add a Property</h1>
+            <h3>Add a Property</h3>
           </div>
-          <div className="form-group">
-            <input type="text" className="form-control title" placeholder="Title"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control description" placeholder="Description"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control city" placeholder="City"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control country" placeholder="Country"/>
-          </div>
-          <div className="form-group">
-            <input type="text"className="form-control property-type" placeholder="Property Type"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control price-per-night" placeholder="Price Per Night"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control max-guests" placeholder="Max Guests"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control bedrooms" placeholder="Bedrooms"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control beds" placeholder="Beds"/>
-          </div>
-          <div className="form-group">
-            <input type="text" className="form-control baths" placeholder="Baths"/>
-          </div>
+            <input name='title' type="text" className="form-control form-control-lg title mb-3" placeholder="Title"/>
+            <input name='description' type="text" className="form-control form-control-lgdescription mb-3" placeholder="Description"/>
+            <input name='city' type="text" className="form-control form-control-lg city mb-3" placeholder="City"/>
+            <input name='country' type="text" className="form-control form-control-lg country mb-3" placeholder="Country"/>
+            <input name='property_type' type="text" className="form-control form-control-lg property-type mb-3" placeholder="Property Type"/>
+            <input name='price_per_night' type="text" className="form-control form-control-lg price-per-night mb-3" placeholder="Price Per Night"/>
+            <input name='max_guests' type="text" className="form-control form-control-lg max-guests mb-3" placeholder="Max Guests"/>
+            <input name='bedrooms' type="text" className="form-control form-control-lg bedrooms mb-3" placeholder="Bedrooms"/>
+            <input name='beds' type="text" className="form-control form-control-lg beds mb-3" placeholder="Beds"/>
+            <input name='baths' type="text" className="form-control form-control-lg baths mb-3" placeholder="Baths"/>
+            
+            <label id="upload-image-btn" htmlFor="imageUpload">Upload image</label>
+            <img id="image-preview" src="" style={{display: 'none'}} alt="image preview"/>
+            <input type="file" id="imageUpload" name="image" accept="image/*" onChange={handleImage}></input>
 
-          <label id="upload-image-btn" htmlFor="imageUpload">Upload image</label>
-          <img id="image-preview" src="" style={{display: 'none'}} alt="image preview"/>
-          <input type="file" id="imageUpload" name="image" accept="image/*" onChange={handleImage}></input>
-
-          <button type="submit" id="sign-up-btn" className="btn btn-large btn-danger btn-block">Add Property</button>
+            <button type="submit" id="sign-up-btn" className="btn btn-large btn-danger btn-block">Add Property</button>
         </form>
       </div>
     </Layout>
-
   )
 }
 

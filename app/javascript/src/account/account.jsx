@@ -38,11 +38,11 @@ class UserAccount extends React.Component {
           <Router>
             <Link to={"/user/" + this.userID + "/accountProperties"}
             onClick={()=>history.push("/user/" + this.userID + "/accountProperties")}>
-            <button className="btn btn-large btn-danger btn-block">Show Properties</button></Link>
+            <button className="m-3 btn btn-large btn-danger btn-block">Show Properties</button></Link>
 
             <Link to={"/user/" + this.userID + "/accountBookings"}
             onClick={()=>history.push("/user/" + this.userID + "/accountBookings")}>
-            <button className="btn btn-large btn-danger btn-block">Show Bookings</button></Link>
+            <button className="m-3 btn btn-large btn-danger btn-block">Show Bookings</button></Link>
           </Router>
         </div>
        </div>
