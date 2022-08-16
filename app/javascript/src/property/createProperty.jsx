@@ -108,7 +108,7 @@ const CreateProperty = () => {
           <img id="image-preview" src="" style={{display: 'none'}} alt="image preview"/>
           <input type="file" id="imageUpload" name="image" accept="image/*" onChange={handleImage}></input>
 
-          <button type="submit" id="sign-up-btn" className="btn btn-default btn-warning pull-right">Add Property</button>
+          <button type="submit" id="sign-up-btn" className="btn btn-large btn-danger btn-block">Add Property</button>
         </form>
       </div>
     </Layout>
