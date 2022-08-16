@@ -35,19 +35,15 @@ class BookingSuccess extends React.Component {
 
     return (
       <Layout>
-        <div className="row my-4 justify-content-center">
-          <div className="col-9 gx-0 property-booking my-1">
-           <div className="d-flex justify-content-between">
-             <div className="p-4 ps-5">
-              <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
-               <a href={`/property/${property.property_id}`} className="text-body text-decoration-none">
-                 <h6 className="m-0">{property.title} <span className="fw-normal">in</span> {booking.city}</h6>
-                 <small>{property.property_type} hosted by {property.host}</small>
-               </a>
-               <hr className="my-2"></hr>
-               <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
-             </div>
-           </div>
+        <div className="row">
+          <div className="col-6 col-lg-4 mb-4 property">
+            <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.image_url})` }} />
+              <a href={`/property/${property.property_id}`} className="text-body text-decoration-none">
+                <h6 className="m-0">{property.title} <span className="fw-normal">in</span> {booking.city}</h6>
+                <small>{property.property_type} hosted by {property.host}</small>
+              </a>
+                <hr className="my-2"></hr>
+                <small className="mb-3">from {booking.start_date} to {booking.end_date}</small>
          </div>
         </div>
       </Layout>
