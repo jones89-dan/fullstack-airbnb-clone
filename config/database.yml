@@ -24,4 +24,4 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: airbnb
+  database:  postgresql-crystalline-02611
